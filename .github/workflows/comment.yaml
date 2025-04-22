@@ -1,0 +1,32 @@
+name: pull request comment
+
+on:
+  workflow_dispatch:
+  #issue_comment:
+    #types: [created, edited, deleted]
+#  pull_request:
+
+permissions:
+  pull-requests: write
+  issues: write
+  contents: write
+  statuses: write
+
+jobs:
+  job01:
+    environment: prd
+    runs-on: ubuntu-latest
+    steps:
+        - name: say hello
+          run: echo "this is job 01"
+  
+
+  job02:
+    environment: prd
+    needs: job01
+    runs-on: ubuntu-latest
+    
+    steps:
+        - name: say hello
+          run: echo "this is job 02"
+        
